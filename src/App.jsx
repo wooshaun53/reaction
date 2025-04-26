@@ -82,8 +82,11 @@ const App = () => {
       id: String(currNote.length + 1),
     }
 
-    setCurrNote(currNote.concat(noteObj))
-    setNewNote("")
+    axios.post("http://localhost:3001/notes", noteObj)
+      .then(response => {
+        setCurrNote(currNote.concat(response.data))
+        setNewNote("")
+      })
   }
 
   const handleChange = (event) => {
