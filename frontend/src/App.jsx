@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import Note from "./components/Note"
 
-const baseUrl = "http://localhost:3001/api/notes"
+const baseUrl = `${import.meta.env.VITE_API_URL}/api/notes`
 
 const Notes = ({ notes }) => {
   return (
