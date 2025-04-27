@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import Note from "./components/Note"
 
+const baseUrl = "http://localhost:3001/api/notes"
+
 const Notes = ({ notes }) => {
   return (
     <div>
@@ -64,7 +66,7 @@ const App = () => {
   const [currNote, setCurrNote] = useState([])
 
   const fetchDataFromServer = () => {
-    axios.get("http://localhost:3001/notes")
+    axios.get(baseUrl)
       .then(response => {
         setCurrNote(response.data)
       })
@@ -82,7 +84,7 @@ const App = () => {
       id: String(currNote.length + 1),
     }
 
-    axios.post("http://localhost:3001/notes", noteObj)
+    axios.post(baseUrl, noteObj)
       .then(response => {
         setCurrNote(currNote.concat(response.data))
         setNewNote("")
